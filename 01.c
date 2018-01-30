@@ -12,8 +12,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 3 || strncmp(argv[1], "-h", 2) == 0 || strncmp(argv[1], "--help", 6) == 0)
     {
-        printf("Usage: ccp [-r] source_file target_file");
-        return -1;
+        return helpMsg();
     }
     if (argc == 3)
     {
@@ -26,6 +25,12 @@ int main(int argc, char *argv[])
     }
 
     return 0;
+}
+
+int helpMsg()
+{
+    printf("Usage: ccp [-r] source_file target_file");
+    return -1;
 }
 
 int is_dir(char *path)
@@ -85,8 +90,7 @@ int ccp(char *src, char *dest)
 {
     if (is_dir(src))
     {
-        printf("Use the -r option to copy directories");
-        return -1;
+        return helpMsg();
     }
     char buffer[1024];
     int sourceFile = open(src, O_RDONLY);

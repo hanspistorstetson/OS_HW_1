@@ -5,4 +5,5 @@ int main(int, char *[]);
 int ccp(char *, char *);
 int ccpo(char *, char *, char *);
 int createNotExist(char *);
+int helpMsg();
 #endif
